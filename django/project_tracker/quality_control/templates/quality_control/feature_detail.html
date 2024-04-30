@@ -8,4 +8,8 @@
         <p>Приоритет: {{ feature.priority }}</p>
         <p>Связанный проект: <a href="{% url 'tasks:project_detail' feature.project.id %}">{{ feature.project }}</a></p>
         <p>Связанная задача: <a href="{% url 'tasks:task_detail' feature.project.id feature.task.id %}">{{ feature.task }}</a></p>
+
+        <hr>
+        <p><a href="{% url 'quality_control:update_feature' feature.id %}">Изменить отчёт об ошибке</a></p>
+        <p><a href="{% url 'quality_control:delete_feature' feature.id %}"onclick="return confirm('Вы уверены, что хотите удалить этот отчёт об ошибке?');">Удалить отчёт об ошибке</a></p>
 {% endblock %}
