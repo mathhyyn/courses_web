@@ -6,14 +6,12 @@ class FeedbackForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea, label='Сообщение')
 
 from django.forms import ModelForm
-from .models import Project
+from .models import Project, Task
 
 class ProjectForm(ModelForm):
     class Meta:
         model = Project
         fields = ['name', 'description']
-
-from .models import Task
 
 class TaskForm(forms.ModelForm):
     class Meta:

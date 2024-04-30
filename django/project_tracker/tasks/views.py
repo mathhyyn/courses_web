@@ -53,7 +53,7 @@ def feedback_view(request):
     return render(request, 'tasks/feedback.html', {'form': form})
 
 
-from .forms import ProjectForm
+from .forms import ProjectForm, TaskForm
 
 def create_project(request):
     if request.method == 'POST':
@@ -64,8 +64,6 @@ def create_project(request):
     else:
         form = ProjectForm()
     return render(request, 'tasks/project_create.html', {'form': form})
-
-from .forms import TaskForm
 
 def add_task_to_project(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
