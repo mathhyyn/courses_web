@@ -1,8 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponse
-from django.urls import reverse
 from .models import Project, Task
 from django.views import View
+from django.views.generic import ListView, DetailView
 
 def index(request):
     return render(request, 'tasks/index.html')
@@ -24,12 +23,11 @@ class IndexView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'tasks/index.html')
 
-from django.views.generic import ListView
 class ProjectsListView(ListView):
     model = Project
+    context_object_name = 'project_list'
     template_name = 'tasks/projects_list.html'
 
-from django.views.generic import DetailView
 class ProjectDetailView(DetailView):
     model = Project
     pk_url_kwarg = 'project_id'
